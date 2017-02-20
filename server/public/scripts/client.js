@@ -24,6 +24,7 @@ function init() {
   $('#nextButton').on('click', nextClicked);
   $('#prevButton').on('click', prevClicked);
   createIndexCarousel(phirehouseArray);
+  updateCarouselPoint(phirehouseArray);
 
 }
 
@@ -44,6 +45,7 @@ function nextClicked() {
   $('.person').remove();
   indexPerson++;
   indexPerson >= phirehouseArray.length && (indexPerson = 0);
+  updateCarouselPoint();
   addPerson(phirehouseArray[indexPerson]);
 }
 
@@ -51,13 +53,20 @@ function prevClicked() {
   $('.person').remove();
   indexPerson--;
   indexPerson < 0 && (indexPerson = phirehouseArray.length - 1);
+  updateCarouselPoint();
   addPerson(phirehouseArray[indexPerson]);
 }
 
 function createIndexCarousel(array) {
-  for (var n = 0; n < array.length; n++) {
-    console.log('carousel generated');
-    $('#indexCarousel').append('<div class="index-point" id="index' + n +'"><div>');
+  for (var i = 0; i < array.length; i++) {
+    $('#indexCarousel').append('<div class="index-point" id="index' + i +'"></div>');
+  }
+}
+
+function updateCarouselPoint() {
+  for (var i = 0; i < phirehouseArray.length; i++) {
+    $('#index' + i).removeClass('current-index-point');
+    i == indexPerson && $('#index' + i).addClass('current-index-point');
   }
 }
 
