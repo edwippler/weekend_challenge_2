@@ -1,4 +1,4 @@
-// var intervalTiming = 5000; //represents milliseconds
+var intervalTiming = 7000; //represents milliseconds
 var indexPerson = 0;
 var phirehouseArray = [];
 
@@ -25,6 +25,7 @@ function init() {
   $('#prevButton').on('click', prevClicked);
   createIndexCarousel(phirehouseArray);
   updateCarouselPoint(phirehouseArray);
+  setInterval(nextClicked, intervalTiming);
 }
 
 function addPerson(person) {
