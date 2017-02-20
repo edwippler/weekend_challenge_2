@@ -25,15 +25,14 @@ function init() {
   $('#prevButton').on('click', prevClicked);
   createIndexCarousel(phirehouseArray);
   updateCarouselPoint(phirehouseArray);
-
 }
 
 function addPerson(person) {
-  $('#dataDisplay').append('<div class="person"></div>');
+  $('#dataDisplay').append('<div class="person"></div>').hide().fadeIn();
   var $el = $('#dataDisplay').children().last();
   $el.append('<h2>' + person.name + '</h2>');
   $el.append('<h3>' + person.git_username + '</h3>');
-  $el.append('<p>"' + person.shoutout + '"</p>');
+  $el.append('<h3>"' + person.shoutout + '"</h3>');
 }
 
 function addButons() {
@@ -42,19 +41,21 @@ function addButons() {
 }
 
 function nextClicked() {
+  $('.person').fadeOut(700);
   $('.person').remove();
   indexPerson++;
   indexPerson >= phirehouseArray.length && (indexPerson = 0);
   updateCarouselPoint();
-  addPerson(phirehouseArray[indexPerson]);
+  addPerson(phirehouseArray[indexPerson]).fadeIn();
 }
 
 function prevClicked() {
+  $('.person').fadeOut(700);
   $('.person').remove();
   indexPerson--;
   indexPerson < 0 && (indexPerson = phirehouseArray.length - 1);
   updateCarouselPoint();
-  addPerson(phirehouseArray[indexPerson]);
+  addPerson(phirehouseArray[indexPerson]).fadeIn();
 }
 
 function createIndexCarousel(array) {

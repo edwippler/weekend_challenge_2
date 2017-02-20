@@ -1,11 +1,18 @@
+div{
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .index-point {
   height: 15px;
   width: 15px;
   display: inline-block;
   background-color: #5F9EA0;
   border: 1px solid black;
+  border-radius: 15px; 
+  margin: 2px;
 }
 
 .current-index-point{
-  background-color: #7fff00; 
+  background-color: #7fff00;
 }
